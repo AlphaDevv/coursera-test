@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Name calculator</title>
-	<script type="text/javascript" src="angular.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-</head>
-<body ng-app="nameCalculator">
-	<h1>Name calculator</h1>
-	<div ng-controller="nameCalculatorController">	Your name:
-		<input type="name" name="name" ng-model="name" ng-keyup="displayNumeric();">
-		<div>Total numeric value of person's name is: {{totalValue}}</div>
-	</div>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+      .success-msg { color: #3c763d; }
+      .error-msg { color: #a94442; }
+    </style>
+  </head>
+	<body ng-app="LunchCheck">
+	   <div class="container" ng-controller="LunchCheckController">
+	     <h1>Lunch Checker</h1>
+	     	<section class="row">
+	     		<div class="form-group col-xs-12 {{getStyleClass('container')}}" >
+	     			<label for="lunch-menu">Your list</label>
+          	<input id="lunch-menu" type="text"
+	           placeholder="list comma separated dishes you usually have for lunch"
+	           class="form-control " ng-model="listFood" />
+	           <p class="help-block">It will not be considered empty item, i.e: , ,, ,</p>
+		      </div>
+	        <div class="form-group col-xs-12">
+	            <button class="btn btn-default" ng-click="isItTooMuch(listFood)">Check If Too Much</button>
+	        </div>
+	        <div class="form-group message col-xs-12 {{getStyleClass('input')}}">
+		      	{{result}}
+		      </div>
+	     	</section>  
+	   </div>
+	</body>
 </html>
